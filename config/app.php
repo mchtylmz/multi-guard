@@ -54,10 +54,10 @@ return [
     |
     */
 
+    'base_url' => env('APP_BASE_URL', 'localhost'),
     'url' => env('APP_URL', 'http://localhost'),
-
     'asset_url' => env('ASSET_URL'),
-
+    'admin_subdomain' => env('APP_ADMIN_SUBDOMAIN', 'dashboard'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -171,6 +171,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\HelperProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,

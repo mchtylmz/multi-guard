@@ -74,7 +74,7 @@ services:
       environment:
           MYSQL_USERNAME: 'multiguard'
           MYSQL_ROOT_PASSWORD: 'multiguard'
-          PMA_HOST: localhost
+          PMA_HOST: db
       networks:
           - multiguard-app-network
 
