@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    echo 'admin';
-    return view('welcome');
+Auth::routes(['register' => false]);
+
+Route::get('/users', [HomeController::class, 'index'])->name('admin.users');
+
+Route::get('/stores', [HomeController::class, 'index'])->name('admin.stores');
+
+Route::prefix('/points')->group(function () {
+    Route::get('/winPoints', [HomeController::class, 'index'])->name('admin.winPoints');
+    Route::get('/usedPoints', [HomeController::class, 'index'])->name('admin.usedPoints');
 });
 
-Auth::routes();
+Route::prefix('/reports')->group(function () {
+    Route::get('/points', [HomeController::class, 'index'])->name('admin.reportPoints');
+});
 
-Route::get('/home', [App\Http\Controllers\Dashboard\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [HomeController::class, 'index'])->name('admin.profile');
